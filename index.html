@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starlight — A Guide to the Stars</title>
+
+  <!-- Bootstrap and Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Our styles (after Bootstrap, so they win) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md">
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">✦ Starlight</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Open menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Stars</a></li>
+            <li class="nav-item"><a class="nav-link" href="night.html">Stargazing Night</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <span class="shooting-star"></span>
+      <p class="tag">A beginner's guide to the night sky</p>
+      <h1>Look up tonight</h1>
+      <p class="intro">Every star you see is a sun. Some are bigger than ours, some are older than the Earth.
+         Let's meet a few of them.</p>
+      <a href="night.html" class="btn btn-star">Join a stargazing night</a>
+    </section>
+
+    <!-- Star cards: Bootstrap grid, 1 / 2 / 4 per row -->
+    <section class="container section">
+      <h2>Meet the stars</h2>
+      <p class="section-text">The color of a star shows its temperature. Blue stars are the hottest,
+         red stars are the coolest.</p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="star-card">
+            <div class="star-ball blue"></div>
+            <span class="temp">12,000 K</span>
+            <h3>Rigel</h3>
+            <p>A blue supergiant in Orion. It shines 100,000 times brighter than our Sun.</p>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="star-card">
+            <div class="star-ball white"></div>
+            <span class="temp">9,900 K</span>
+            <h3>Sirius</h3>
+            <p>The brightest star in the night sky. Look for it low in the south in winter.</p>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="star-card">
+            <div class="star-ball yellow"></div>
+            <span class="temp">6,000 K</span>
+            <h3>Polaris</h3>
+            <p>The North Star. It almost never moves, so travelers used it to find north.</p>
+          </article>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="star-card">
+            <div class="star-ball red"></div>
+            <span class="temp">3,600 K</span>
+            <h3>Betelgeuse</h3>
+            <p>A red giant on Orion's shoulder. It is so big it could swallow the orbit of Mars.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="container section">
+      <h2>The 5 brightest stars</h2>
+      <p class="section-text">You can see all of them without a telescope.</p>
+
+      <div class="table-box">
+        <div class="table-responsive">
+          <table class="table table-hover stars-table caption-top">
+            <caption>ly = light year, the distance light travels in one year</caption>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Star</th>
+                <th scope="col" class="d-none d-sm-table-cell">Constellation</th>
+                <th scope="col">Color</th>
+                <th scope="col">Distance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Sirius</td>
+                <td class="d-none d-sm-table-cell">Canis Major</td>
+                <td><span class="dot white"></span>White</td>
+                <td>8.6 ly</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Canopus</td>
+                <td class="d-none d-sm-table-cell">Carina</td>
+                <td><span class="dot white"></span>White</td>
+                <td>310 ly</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Alpha Centauri</td>
+                <td class="d-none d-sm-table-cell">Centaurus</td>
+                <td><span class="dot yellow"></span>Yellow</td>
+                <td>4.4 ly</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Arcturus</td>
+                <td class="d-none d-sm-table-cell">Boötes</td>
+                <td><span class="dot orange"></span>Orange</td>
+                <td>37 ly</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Vega</td>
+                <td class="d-none d-sm-table-cell">Lyra</td>
+                <td><span class="dot white"></span>White</td>
+                <td>25 ly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="logo">✦ Starlight</p>
+      <p>Student project · Fonts: Google Fonts</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS: needed only for the mobile menu button -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
