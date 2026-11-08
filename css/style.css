@@ -8,8 +8,18 @@
   --muted: #a6aecb;
   --gold: #ffd27d;                     /* accent: warm starlight */
 
+  --error: #ff6b4a;                    /* the red star color, for errors */
+
   --font-title: 'Cinzel', serif;
   --font-text: 'Nunito', sans-serif;
+
+  scroll-behavior: auto;               /* jQuery makes the smooth scroll */
+}
+
+/* visible focus for the Tab key */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 
@@ -277,9 +287,10 @@ h2 {
   padding: 1.5rem;
 }
 
-.info-box h3 {
+.info-box h2 {
   font-size: 1.2rem;
   color: var(--gold);
+  margin-bottom: 0.5rem;
 }
 
 .info-box p {
@@ -321,9 +332,199 @@ h2 {
   box-shadow: 0 0 0 0.2rem rgba(255, 210, 125, 0.25);
 }
 
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: none;                 /* they already have a gold border and glow */
+}
+
 .form-check-input:checked {
   background-color: var(--gold);
   border-color: var(--gold);
+}
+
+.form-check-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 0.2rem rgba(255, 210, 125, 0.25);
+}
+
+fieldset legend.form-label {
+  font-size: 1rem;
+}
+
+/* error state */
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--error);
+}
+
+.form-control.is-invalid {
+  background-image: none;        /* no Bootstrap icon, the text under the field is enough */
+}
+
+.form-control.is-invalid:focus,
+.form-select.is-invalid:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 74, 0.25);
+}
+
+.invalid-feedback {
+  color: var(--error);
+}
+
+/* success state */
+.success-box {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  background: rgba(255, 210, 125, 0.08);
+}
+
+.success-box h3 {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.success-box p {
+  margin: 0;
+}
+
+
+/* ---------- 10b. Search, filter and sort (Stars page) ---------- */
+.color-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.filter-btn {
+  background: var(--card);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  transition: color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-btn:hover {
+  color: var(--text);
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(255, 210, 125, 0.3);
+}
+
+.filter-btn.active {
+  background: var(--gold);
+  color: var(--night);
+  border-color: var(--gold);
+}
+
+.result-line {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.star-card .place {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.star-card .light-year {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+/* empty result */
+.empty {
+  display: none;
+  text-align: center;
+  padding: 3rem 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 20px;
+  color: var(--muted);
+}
+
+
+/* ---------- 10c. Questions accordion (Night page) ---------- */
+.faq {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item h3 {
+  margin: 0;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: left;
+  padding: 1rem 0;
+  transition: color 0.3s;
+}
+
+.faq-question:hover {
+  color: var(--gold);
+}
+
+.faq-icon {
+  color: var(--gold);
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);       /* + turns into × */
+}
+
+.faq-answer {
+  display: none;
+  color: var(--muted);
+  padding-bottom: 1rem;
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
+
+/* ---------- 10d. Back to top button ---------- */
+.to-top {
+  display: none;
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--night);
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: box-shadow 0.3s;
+}
+
+.to-top:hover {
+  box-shadow: 0 0 25px var(--gold);
 }
 
 
