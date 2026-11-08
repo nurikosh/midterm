@@ -44,48 +44,46 @@
       <a href="night.html" class="btn btn-star">Join a stargazing night</a>
     </section>
 
-    <!-- Star cards: Bootstrap grid, 1 / 2 / 4 per row -->
+    <!-- Star cards: made by js/stars.js from an array -->
     <section class="container section">
       <h2>Meet the stars</h2>
       <p class="section-text">The color of a star shows its temperature. Blue stars are the hottest,
-         red stars are the coolest.</p>
+         red stars are the coolest. Find a star by its name, color or distance.</p>
 
-      <div class="row g-4">
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="star-card">
-            <div class="star-ball blue"></div>
-            <span class="temp">12,000 K</span>
-            <h3>Rigel</h3>
-            <p>A blue supergiant in Orion. It shines 100,000 times brighter than our Sun.</p>
-          </article>
+      <div class="row g-3">
+        <div class="col-md-8">
+          <label for="search" class="form-label">Search by name</label>
+          <input type="search" id="search" class="form-control" placeholder="For example, Vega"
+                 autocomplete="off" aria-describedby="search-error">
+          <div class="invalid-feedback" id="search-error"></div>
         </div>
+        <div class="col-md-4">
+          <label for="sort" class="form-label">Sort by</label>
+          <select id="sort" class="form-select">
+            <option value="name">Name (A–Z)</option>
+            <option value="hot">Hottest first</option>
+            <option value="near">Closest first</option>
+          </select>
+        </div>
+      </div>
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="star-card">
-            <div class="star-ball white"></div>
-            <span class="temp">9,900 K</span>
-            <h3>Sirius</h3>
-            <p>The brightest star in the night sky. Look for it low in the south in winter.</p>
-          </article>
-        </div>
+      <fieldset class="color-filter">
+        <legend class="visually-hidden">Filter by color</legend>
+        <button type="button" class="filter-btn active" data-color="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-color="blue" aria-pressed="false"><span class="dot blue"></span>Blue</button>
+        <button type="button" class="filter-btn" data-color="white" aria-pressed="false"><span class="dot white"></span>White</button>
+        <button type="button" class="filter-btn" data-color="yellow" aria-pressed="false"><span class="dot yellow"></span>Yellow</button>
+        <button type="button" class="filter-btn" data-color="orange" aria-pressed="false"><span class="dot orange"></span>Orange</button>
+        <button type="button" class="filter-btn" data-color="red" aria-pressed="false"><span class="dot red"></span>Red</button>
+      </fieldset>
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="star-card">
-            <div class="star-ball yellow"></div>
-            <span class="temp">6,000 K</span>
-            <h3>Polaris</h3>
-            <p>The North Star. It almost never moves, so travelers used it to find north.</p>
-          </article>
-        </div>
+      <p class="result-line" id="result-line" aria-live="polite"></p>
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <article class="star-card">
-            <div class="star-ball red"></div>
-            <span class="temp">3,600 K</span>
-            <h3>Betelgeuse</h3>
-            <p>A red giant on Orion's shoulder. It is so big it could swallow the orbit of Mars.</p>
-          </article>
-        </div>
+      <div class="row g-4" id="star-list"></div>
+
+      <div class="empty" id="empty">
+        <p>No stars found. Try another name or color.</p>
+        <button type="button" class="btn btn-star" id="reset">Show all stars</button>
       </div>
     </section>
 
@@ -112,35 +110,35 @@
                 <td>1</td>
                 <td>Sirius</td>
                 <td class="d-none d-sm-table-cell">Canis Major</td>
-                <td><span class="dot white"></span>White</td>
+                <td class="text-nowrap"><span class="dot white"></span>White</td>
                 <td>8.6 ly</td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>Canopus</td>
                 <td class="d-none d-sm-table-cell">Carina</td>
-                <td><span class="dot white"></span>White</td>
+                <td class="text-nowrap"><span class="dot white"></span>White</td>
                 <td>310 ly</td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>Alpha Centauri</td>
                 <td class="d-none d-sm-table-cell">Centaurus</td>
-                <td><span class="dot yellow"></span>Yellow</td>
+                <td class="text-nowrap"><span class="dot yellow"></span>Yellow</td>
                 <td>4.4 ly</td>
               </tr>
               <tr>
                 <td>4</td>
                 <td>Arcturus</td>
                 <td class="d-none d-sm-table-cell">Boötes</td>
-                <td><span class="dot orange"></span>Orange</td>
+                <td class="text-nowrap"><span class="dot orange"></span>Orange</td>
                 <td>37 ly</td>
               </tr>
               <tr>
                 <td>5</td>
                 <td>Vega</td>
                 <td class="d-none d-sm-table-cell">Lyra</td>
-                <td><span class="dot white"></span>White</td>
+                <td class="text-nowrap"><span class="dot white"></span>White</td>
                 <td>25 ly</td>
               </tr>
             </tbody>
@@ -154,11 +152,15 @@
   <footer class="footer">
     <div class="container footer-inner">
       <p class="logo">✦ Starlight</p>
-      <p>Student project · Fonts: Google Fonts</p>
+      <p>Student project · Fonts: Google Fonts · Bootstrap 5.3, jQuery 3.7 · Texts and code made with the help of an AI assistant (Claude)</p>
     </div>
   </footer>
 
-  <!-- Bootstrap JS: needed only for the mobile menu button -->
+  <button type="button" class="to-top" id="to-top" aria-label="Back to top">↑</button>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
 </body>
 </html>
